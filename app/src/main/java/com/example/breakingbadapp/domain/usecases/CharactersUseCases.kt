@@ -1,7 +1,7 @@
 package com.example.breakingbadapp.domain.usecases
 
 import com.example.breakingbadapp.data.CharactersRepository
-import com.example.breakingbadapp.domain.toCharactersModel
+import com.example.breakingbadapp.domain.mappers.toCharactersModel
 import javax.inject.Inject
 
 /**

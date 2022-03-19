@@ -1,6 +1,7 @@
-package com.example.breakingbadapp.domain
+package com.example.breakingbadapp.domain.mappers
 
 import com.example.breakingbadapp.data.dto.CharacterDTO
+import com.example.breakingbadapp.domain.models.Character
 import com.example.breakingbadapp.domain.models.CharactersModel
 
 /**
@@ -8,6 +9,11 @@ import com.example.breakingbadapp.domain.models.CharactersModel
  */
 
 fun List<CharacterDTO>.toCharactersModel(): CharactersModel {
-
-    return CharactersModel(this.groupBy { it.category })
+    val characterListModel = this.map { characterDTO -> characterDTO.toCharacter() }
+    return CharactersModel(characterListModel)
 }
+
+fun CharacterDTO.toCharacter(): Character{
+    return Character(id, name, nick, img, status, category, birthday, appearence)
+}
+

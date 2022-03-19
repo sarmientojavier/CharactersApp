@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class CharacterDTO(
     @SerializedName("char_id") val id: Int,
     @SerializedName("name") val name: String,
-    @SerializedName("nickName") val nick: String,
+    @SerializedName("nickname") val nick: String,
     @SerializedName("img") val img: String,
     @SerializedName("status") val status: String,
     @SerializedName("category") val category: String,

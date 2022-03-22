@@ -21,7 +21,7 @@ import com.example.breakingbadapp.R
 /**
  * Created by Javier Sarmiento
  */
-class CharacterAdapter(private val context: Context, private var characterList: List<Character>) :
+class CharacterAdapter(private val context: Context, private var characterList: List<Character>, private val cellClickListener: CellClickListener,) :
     RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -38,6 +38,9 @@ class CharacterAdapter(private val context: Context, private var characterList: 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindInformation(characterList[position], context)
+        holder.itemView.setOnClickListener {
+            cellClickListener.onCellClickListener(characterList[position])
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -64,4 +67,9 @@ class CharacterAdapter(private val context: Context, private var characterList: 
                 .into(ivCharacter)
         }
     }
+}
+
+interface CellClickListener{
+    fun onCellClickListener(character: Character)
+
 }

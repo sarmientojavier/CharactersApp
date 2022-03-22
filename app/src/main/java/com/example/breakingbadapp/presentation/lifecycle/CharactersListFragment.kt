@@ -10,13 +10,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.breakingbadapp.databinding.FragmentCharacterListBinding
 import com.example.breakingbadapp.presentation.adapters.CharacterAdapter
 import com.example.breakingbadapp.presentation.viewmodels.CharactersViewModel
+import com.example.breakingbadapp.domain.models.Character
+import com.example.breakingbadapp.presentation.adapters.CellClickListener
+
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by Javier Sarmiento
  */
 @AndroidEntryPoint
-class CharactersListFragment: Fragment(){
+class CharactersListFragment: Fragment(), CellClickListener {
 
     private var _binding: FragmentCharacterListBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
@@ -43,7 +46,7 @@ class CharactersListFragment: Fragment(){
         super.onViewCreated(view, savedInstanceState)
         binding.shimmerLayout.startShimmer()
         charactersViewModel.characterList.observe(viewLifecycleOwner, { charactersModel ->
-            mAdapter = context?.let { CharacterAdapter(it, charactersModel.characters) }
+            mAdapter = context?.let { context -> CharacterAdapter(context, charactersModel.characters.sortedBy { it.category }, this) }
             binding.rvCharacters.apply {
                 adapter = mAdapter
                 layoutManager = LinearLayoutManager(context)
@@ -53,5 +56,12 @@ class CharactersListFragment: Fragment(){
 
         })
         charactersViewModel.getCharacterList()
+    }
+
+    override fun onCellClickListener(character: Character) {
+        CharacterDetailDialog.newInstance(character).show(
+            childFragmentManager,
+            CharacterDetailDialog.CHARACTER_DETAIL_TAG
+        )
     }
 }

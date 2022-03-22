@@ -1,3 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">BreakingBadApp</string>
+    <string name="character_name">Name</string>
+    <string name="character_age">Age</string>
+    <string name="character_seasons">Seasons</string>
+    <string name="character_phrases">Phrases</string>
+    <string name="character_age_text"> The of the character is: %1s yeas %2s months and %3s days</string>
+
 </resources>

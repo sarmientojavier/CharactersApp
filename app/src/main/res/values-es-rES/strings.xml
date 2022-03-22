@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BreakingBadApp (Español)</string>
+    <string name="character_name">Nombre</string>
+    <string name="character_age">Edad</string>
+    <string name="character_seasons">Temporadas</string>
+    <string name="character_phrases">Frases</string>
+    <string name="character_age_text">La edad exacta es de: %1s años %2s meses y %3s días</string>
+
+</resources>
